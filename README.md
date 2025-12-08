@@ -29,3 +29,7 @@ The objective is to implement a highly limited feature set to understand core OS
 *   **Simple Shell:** (Future Goal) A bare-bones command interpreter.
 
 <!-- ... rest of the file ... -->
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
