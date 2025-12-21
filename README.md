@@ -8,7 +8,7 @@ A minimal, 64-bit learning operating system built from scratch using C and Assem
 
 This project is purely for **educational purposes only** and is currently **under active development**. The goal is to learn how operating systems function at a low level, covering concepts like the boot process, memory management, and hardware interaction. The name "One Piece" is used as a personal, motivating identifier inspired by the anime series.
 
-I am also heavily inspired by the work of Terry A. Davis, the creator of TempleOS, who demonstrated what highly creative, bare-metal OS programming looks like.
+I am also heavily inspired by the work of the late **Terry A. Davis**, the creator of TempleOS, who demonstrated what highly creative, bare-metal OS programming looks like.
 
 <!-- The rest of the README content goes here... -->
 
