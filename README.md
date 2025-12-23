@@ -1,6 +1,6 @@
 # One Piece OS
 
-![License: MIT](img.shields.io) 
+<!--![License: MIT](img.shields.io)--> 
 ![Status: In Development](img.shields.io) 
 <!-- You can use the badge above to show status visually -->
 
