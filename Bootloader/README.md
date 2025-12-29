@@ -15,8 +15,6 @@ A bootloader is the very first code executed by a PC when it boots — the BIOS 
 
 This is a **first‑stage bootloader**, its job is to run first and can later be extended to load a full kernel.
 
----
-
 ## Files
 
 | File | Description |
@@ -24,16 +22,16 @@ This is a **first‑stage bootloader**, its job is to run first and can later be
 | `boot.asm` | the assembly source for the bootloader |
 | `boot.bin` | the assembled 512‑byte binary boot sector |
 
----
-
 ## Build
 
-You need **NASM** (Netwide Assembler) and QEMU Emulator installed:
-
+You need **NASM** (Netwide Assembler) and **QEMU Emulator** installed:
+* First command create **boot.bin** file
+* Second command execute and display output
 ```bash
 nasm -f bin boot.asm -o boot.bin
 
 qemu-system-x86_64 boot.bin
 ```
+Here, the character **A** printed in QEMU Emulator screen:
 
-![The character **'A'** printed on the emulator screen:](images/print_character.png)
+![The character **'A'** printed on the emulator screen:](../images/print_character.png)
