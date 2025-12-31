@@ -35,3 +35,39 @@ qemu-system-x86_64 boot.bin
 Here, the character **A** printed in QEMU Emulator screen:
 
 ![The character **'A'** printed on the emulator screen:](../images/print_character.png)
+
+## Debugging
+
+When working with bootloaders, it is important to inspect the binary to ensure it is correctly structured. You can use tools like `hexdump` or a debugger to verify your code.
+
+### Using `hexdump`
+
+`hexdump` allows you to view the contents of your compiled bootloader in hexadecimal format. This is useful to confirm:
+
+- That your code is in the correct place.
+- That the boot signature (`0x55AA`) is at the correct offset (bytes 511 and 512).
+- That any padding bytes are correct.
+
+Example:
+
+```bash
+hexdump -C bootloader.bin
+```
+output:
+
+```
+00000000  fa 31 c0 8e d8 8e c0 b4  0e b0 41 cd 10 eb fe 00  |.1........A.....|
+00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+*
+000001f0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 55 aa  |..............U.|
+00000200
+```
+The first line shows **bootloader** code:
+- `fa` → `cli`
+- `31 c0` → `xor ax, ax`
+- `8e d8` → `mov ds, ax`
+- `8e c0` → `mov es, ax`
+- `b4 0e` → BIOS teletype
+- `b0 41` → `'A'`
+- `cd 10` → print `A`
+- `eb fe` → infinite loop
