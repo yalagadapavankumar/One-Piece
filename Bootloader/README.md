@@ -71,3 +71,46 @@ The first line shows **bootloader** code:
 - `b0 41` → `'A'`
 - `cd 10` → print `A`
 - `eb fe` → infinite loop
+## using qemu + gdb
+
+QEMU must be started with the -s and -S flags:
+
+-  -s: (shorthand for -gdb tcp::1234) Opens a GDB server on TCP port 1234.
+- -S: Freezes the CPU at startup (waiting for GDB connection).
+
+I'm using 64 bit computer i use this command
+
+    qemu-system-x86_64 boot.bin -s -S
+
+QEMU will launch, but the CPU will be paused,see the below picture.
+![qemu will launch and cpu will be paused](../images/paused.png)
+
+**Connect GDB**
+
+In a separate terminal, launch GDB and connect to the QEMU server.
+
+type `gdb` in terminal
+
+**Connect to QEMU**
+
+    target remote localhost:1234
+**Load Symbols/Breakpoints:** The boot sector starts executing at address 0x7c00.
+
+    break *0x7c00
+![Breakpoint at *0x7c00](../images/breakpoint.png)
+
+**Start Execution:** Let the CPU run until it hits the breakpoint.
+
+    continue
+
+  ![load address](../images/loadaddress.png)
+  
+ now breakpoint at `0x7c00`
+
+again `continue`, then it would be `halt` then type `Ctrl-c`
+
+  ![character printed](../images/final_output.png)
+
+  here, you can see that register `rax` has Character **A**
+
+finally type `kill` to close the QEMU process then type `quit` to exit from the `gdb`.
